@@ -18,7 +18,7 @@ function cleanEnvVal(val: string | undefined): string {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.RENDER === "true" && process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json());
 
@@ -1269,6 +1269,7 @@ async function start() {
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
+    app.use("/YY", express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
