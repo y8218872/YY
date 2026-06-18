@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tajawal", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  direction: rtl;
+  text-align: right;
+  background-color: #f8fafc; /* Sleek Off-White/Slate Background */
+  color: #0f172a;
+  scroll-behavior: smooth;
+}
+
+/* Sleek Interface Premium Elements */
+.sleek-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.sleek-card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 2px 8px -1px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sleek-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+  border-color: rgba(203, 213, 225, 1);
+}
+
+/* Custom interactive active sidebars */
+.sidebar-link-active {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px -1px rgba(15, 23, 42, 0.25);
+}
+
+/* Elegant Inputs for Sleek Theme */
+.sleek-input {
+  background-color: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.sleek-input:focus {
+  background-color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  outline: none;
+}
+
+/* Gorgeous Badge Indicators */
+.badge-debt {
+  background-color: rgba(254, 242, 242, 0.9);
+  color: #dc2626;
+  border: 1px solid rgba(254, 202, 202, 0.4);
+}
+
+.badge-payment {
+  background-color: rgba(240, 253, 250, 0.9);
+  color: #0d9488;
+  border: 1px solid rgba(153, 246, 228, 0.4);
+}
+
+/* Table Enhancements */
+.sleek-table {
+  width: 100%;
+  text-align: right;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.sleek-table thead th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+}
+
+.sleek-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.sleek-table tbody tr:hover {
+  background-color: rgba(248, 250, 252, 0.8);
+}
+
+.sleek-table tbody td {
+  padding: 1.125rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Interactive Click Animations */
+.btn-interactive {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-interactive:active {
+  transform: scale(0.97);
+}
+
+/* Report View Specific Style */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  #statement-print-area {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+

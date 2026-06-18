@@ -1,0 +1,6 @@
+{
+  "name": "إدارة الديون والعملاء",
+  "description": "نظام لإدارة حسابات العملاء، الديون، وتسجيل المدفوعات كشف حساب متكامل مع إمكانية التصدير إلى PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
