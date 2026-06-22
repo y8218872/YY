@@ -237,7 +237,7 @@ export default function TransactionForm({ clients, clientId, onClose, onSave }: 
               disabled={isSubmitting}
               className={`px-5 py-2.5 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-md transition-all disabled:opacity-50 btn-interactive cursor-pointer ${
                 type === "debt"
-                  ? "bg-red-650 hover:bg-red-700 shadow-red-900/10"
+                  ? "bg-red-700 shadow-red-900/50 hover:bg-red-700 shadow-red-900/10"
                   : "bg-emerald-700 hover:bg-emerald-800 shadow-emerald-900/10"
               }`}
             >

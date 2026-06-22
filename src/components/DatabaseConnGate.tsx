@@ -306,7 +306,8 @@ export default function DatabaseConnGate({ dbConfig, dbStatus, onUpdateConfig }:
                     type="button"
                     onClick={handleSwitchToLocal}
                     disabled={isTesting}
-                    className="w-full sm:w-auto px-5 py-3 bg-slate-800 hover:bg-slate-750 text-slate-300 rounded-xl text-xs font-bold transition-all cursor-pointer text-center disabled:opacity-50 border border-slate-700/50 btn-interactive"
+                    style={{ backgroundColor: '#f40000' }}
+                    className="w-full sm:w-auto px-5 py-3 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all cursor-pointer text-center disabled:opacity-50 border border-red-700 btn-interactive"
                   >
                     التحول السريع للتخزين المحلي
                   </button>
