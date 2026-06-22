@@ -577,23 +577,8 @@ export default function App() {
                 className="space-y-6"
               >
                 
-                {/* Financial Aggregate Panels */}
-                {canDo('view_stats') ? (
-                  <DashboardStats stats={stats} loading={loadingData} />
-                ) : (
-                  <div className="bg-slate-800 text-white p-5 rounded-2xl border border-slate-700/80 flex items-center justify-between gap-4 font-sans shadow-sm select-none">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 text-indigo-400">
-                        <Shield className="w-5 h-5 text-indigo-400 shrink-0" />
-                        <h3 className="text-xs font-black">مؤشرات الأداء الكلي والصناديق مقيدة</h3>
-                      </div>
-                      <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
-                        عذراً، تم حظر وإخفاء لقطات المجاميع التراكمية وسندات الصندوق العريضة في حسابك بقرار وقائي من مدير النظام.
-                      </p>
-                    </div>
-                    <span className="text-[9px] bg-slate-700 text-slate-350 px-2.5 py-1 rounded-lg font-bold border border-slate-600 shrink-0">موظف سداد</span>
-                  </div>
-                )}
+               {/* Financial Aggregate Panels */}
+                
 
               {/* Grid block: Quick Customers Directory & Recent entries */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -708,6 +693,23 @@ export default function App() {
                 </div>
 
               </div>
+
+              {canDo('view_stats') ? (
+                  <DashboardStats stats={stats} loading={loadingData} />
+                ) : (
+                  <div className="bg-slate-800 text-white p-5 rounded-2xl border border-slate-700/80 flex items-center justify-between gap-4 font-sans shadow-sm select-none">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-indigo-400">
+                        <Shield className="w-5 h-5 text-indigo-400 shrink-0" />
+                        <h3 className="text-xs font-black">مؤشرات الأداء الكلي والصناديق مقيدة</h3>
+                      </div>
+                      <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                        عذراً، تم حظر وإخفاء لقطات المجاميع التراكمية وسندات الصندوق العريضة في حسابك بقرار وقائي من مدير النظام.
+                      </p>
+                    </div>
+                    <span className="text-[9px] bg-slate-700 text-slate-350 px-2.5 py-1 rounded-lg font-bold border border-slate-600 shrink-0">موظف سداد</span>
+                  </div>
+                )}
 
             </motion.div>
           )}
@@ -963,7 +965,7 @@ export default function App() {
 
       {/* FOOTER */}
       <footer className="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-12 text-center text-xs space-y-1">
-        <p className="font-semibold text-slate-350">نظام مُسيّر للأعمال © {new Date().getFullYear()} - جميع الحقوق محفوظة.</p>
+        <p className="font-semibold text-slate-350">نظام ذي يزن للأعمال © {new Date().getFullYear()} - جميع الحقوق محفوظة.</p>
         <p className="text-[10px] text-slate-500">تم بناؤه بدقة هندسية ومزامنة متكاملة بقواعد البيانات لتأمين الدفاتر والحسابات المالية.</p>
       </footer>
 
