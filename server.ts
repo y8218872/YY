@@ -143,6 +143,7 @@ async function initDatabase(config: DbConfig): Promise<DbStatus> {
       await mysqlPool.end().catch(() => {});
     }
 
+    const isLocalhost = config.host === "localhost" || config.host === "127.0.0.1" || config.host === "::1" || config.host.includes("local");
     mysqlPool = mysql.createPool({
       host: config.host,
       port: config.port,
@@ -150,9 +151,14 @@ async function initDatabase(config: DbConfig): Promise<DbStatus> {
       password: config.pass,
       database: config.name,
       waitForConnections: true,
-      connectionLimit: 5,
+      connectionLimit: 15,
       queueLimit: 0,
-      connectTimeout: 10000 // 10s timeout
+      connectTimeout: 20000,
+      enableKeepAlive: true,
+      keepAliveInitialDelay: 10000,
+      ssl: isLocalhost ? undefined : {
+        rejectUnauthorized: false
+      }
     });
 
     // Test connection
