@@ -336,6 +336,7 @@ export default function AccountStatement({ clients, transactions, selectedClient
                       <th className="px-4 py-3 font-bold text-slate-700">تاريخ القيد</th>
                       <th className="px-4 py-3 font-bold text-slate-700">النوع</th>
                       <th className="px-4 py-3 font-bold text-slate-700">البيان / تفصيل العملية</th>
+                      <th className="px-4 py-3 font-bold text-slate-700 text-center">المستخدِم (المدخِل)</th>
                       <th className="px-4 py-3 font-bold text-red-650 text-center">مدين (+)</th>
                       <th className="px-4 py-3 font-bold text-emerald-650 text-center">دائن (-)</th>
                       <th className="px-4 py-3 font-bold text-slate-700 text-left">الرصيد التراكمي</th>
@@ -348,6 +349,7 @@ export default function AccountStatement({ clients, transactions, selectedClient
                         <td className="px-4 py-3.5 text-xs text-slate-400 font-mono">{formatDate(startDate)}</td>
                         <td className="px-4 py-3.5 text-xs font-bold text-slate-500">رصيد افتتاحي</td>
                         <td className="px-4 py-3.5 text-xs text-slate-400 italic">رصيد ما قبل تاريخ بداية الفلترة المحدد</td>
+                        <td className="px-4 py-3.5 text-center text-slate-400 font-serif">-</td>
                         <td className="px-4 py-3.5 text-center text-slate-400 font-serif">-</td>
                         <td className="px-4 py-3.5 text-center text-slate-400 font-serif">-</td>
                         <td className="px-4 py-3.5 text-left font-bold text-slate-600 truncate font-mono">{formatCurrency(openingBalance)}</td>
@@ -377,6 +379,9 @@ export default function AccountStatement({ clients, transactions, selectedClient
                         </td>
                         <td className="px-4 py-3.5 text-slate-700 text-xs font-medium max-w-[200px] truncate" title={item.description}>
                           {item.description || "معاملة تجارية عامة"}
+                        </td>
+                        <td className="px-4 py-3.5 text-center text-slate-500 text-xs font-bold">
+                          {item.username || "مدير النظام"}
                         </td>
                         <td className="px-4 py-3.5 text-center text-red-600 font-semibold font-mono text-xs">
                           {item.type === "debt" ? `+${item.amount.toFixed(2)}` : "-"}

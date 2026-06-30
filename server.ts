@@ -184,10 +184,17 @@ async function initDatabase(config: DbConfig): Promise<DbStatus> {
         amount DECIMAL(10, 2) NOT NULL,
         date VARCHAR(50) NOT NULL,
         description VARCHAR(255),
+        username VARCHAR(255) DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
+
+    try {
+      await connection.query("ALTER TABLE transactions ADD COLUMN username VARCHAR(255) DEFAULT NULL;");
+    } catch (e) {
+      // Column may already exist, ignore
+    }
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
@@ -637,7 +644,7 @@ app.get("/api/transactions", async (req, res) => {
   try {
     if (dbStatus.connected && dbStatus.type === "mysql" && mysqlPool) {
       let query = `
-        SELECT t.id, t.client_id as clientId, t.type, t.amount, t.date, t.description, t.created_at as createdAt, c.name as clientName
+        SELECT t.id, t.client_id as clientId, t.type, t.amount, t.date, t.description, t.username, t.created_at as createdAt, c.name as clientName
         FROM transactions t
         JOIN clients c ON t.client_id = c.id
       `;
@@ -682,6 +689,7 @@ app.get("/api/transactions", async (req, res) => {
 // Add transaction
 app.post("/api/transactions", async (req, res) => {
   const { clientId, type, amount, date, description } = req.body;
+  const { username: creatorUsername } = getRequestUser(req);
 
   if (!clientId) {
     return res.status(400).json({ error: "الرجاء تحديد العميل" });
@@ -705,8 +713,8 @@ app.post("/api/transactions", async (req, res) => {
       }
 
       const [result]: any = await mysqlPool.query(
-        "INSERT INTO transactions (client_id, type, amount, date, description, created_at) VALUES (?, ?, ?, ?, ?, NOW())",
-        [clientId, type, parsedAmount, transDate, description || ""]
+        "INSERT INTO transactions (client_id, type, amount, date, description, username, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())",
+        [clientId, type, parsedAmount, transDate, description || "", creatorUsername || "مدير النظام"]
       );
 
       res.status(201).json({
@@ -717,6 +725,7 @@ app.post("/api/transactions", async (req, res) => {
         amount: parsedAmount,
         date: transDate,
         description: description || "",
+        username: creatorUsername || "مدير النظام",
         createdAt: new Date().toISOString()
       });
     } else {
@@ -734,6 +743,7 @@ app.post("/api/transactions", async (req, res) => {
         amount: parsedAmount,
         date: transDate,
         description: description || "",
+        username: creatorUsername || "مدير النظام",
         createdAt: new Date().toISOString()
       };
       

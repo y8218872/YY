@@ -674,7 +674,10 @@ export default function App() {
                               <span className="text-[10px] font-bold text-slate-800 truncate max-w-[100px]">{t.clientName}</span>
                             </div>
                             <p className="text-[10px] text-slate-500 line-clamp-1">{t.description || "معاملة تجارية عامة"}</p>
-                            <span className="text-[8px] text-slate-400 block font-mono font-medium">{t.date}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[8px] text-slate-400 block font-mono font-medium">{t.date}</span>
+                              <span className="text-[8px] text-indigo-500/85 font-black bg-indigo-50/70 px-1.5 py-0.5 rounded-md">بواسطة: {t.username || "مدير النظام"}</span>
+                            </div>
                           </div>
 
                           <div className="text-left font-mono font-bold text-xs mt-0.5">

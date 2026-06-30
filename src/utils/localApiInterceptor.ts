@@ -456,6 +456,7 @@ function setupLocalStorageFetchOverride() {
           amount: parseFloat(amount),
           date: date || new Date().toISOString().split('T')[0],
           description: description || "",
+          username: username || "مدير النظام",
           createdAt: new Date().toISOString()
         };
 

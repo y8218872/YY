@@ -20,6 +20,7 @@ export interface Transaction {
   amount: number;
   date: string;
   description: string;
+  username?: string | null;
   createdAt: string;
 }
 

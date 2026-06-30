@@ -1,0 +1,19 @@
+{
+  "name": "نظام ذي يزن للأعمال",
+  "short_name": "ذي يزن للأعمال",
+  "description": "نظام ذكي متكامل لجدولة الديون والعملاء والمزامنة الفورية لكشوفات الحسابات والتحصيلات المالية",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
